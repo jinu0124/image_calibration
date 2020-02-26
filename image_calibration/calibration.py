@@ -41,6 +41,8 @@ class calib:
                 if '.jpg' in img2:
                     image_dir_name = os.path.join(self.dir, img2)
                     img = cv2.imread(image_dir_name)
+                    # img = cv2.copyMakeBorder(img, 250, 0, 30, 30, cv2.BORDER_CONSTANT, value=[255, 255, 255])
+                    # image panning 을 이용하여 왜곡 보정으로 인해 잘리는 부분을 살릴 수 있음
                     h, w = img.shape[:2]
                     newcameramtx, roi = cv2.getOptimalNewCameraMatrix(mtx, dist, (w, h), 0, (w, h))
                     # image의 카메라 행렬 구체화, 개선(필수사항은 아님)
